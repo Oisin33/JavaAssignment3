@@ -23,5 +23,20 @@ public class RegisterApplicationTest {
         assertTrue(tester.validEmail());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", "fl@we", "ay!a2"})
+
+    public void invalidPasswordLength(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarklaf@gmail.com", passwordTest);
+        assertFalse(tester.validLength());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"flowridia&8", "9ayla!leaf"})
+
+    public void validPasswordLength(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertTrue(tester.validLength());
+    }
 
 }
