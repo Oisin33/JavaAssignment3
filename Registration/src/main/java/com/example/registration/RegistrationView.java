@@ -51,4 +51,8 @@ public class RegistrationView {
         return symbolPatterns.matcher(this.password).find();
     }
 
+    public void reset() {
+        this.email = "";
+        this.password = "";
+    }
 }
