@@ -54,4 +54,20 @@ public class RegisterApplicationTest {
         RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
         assertTrue(tester.hasLetter());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"flowridia&!", "@^ayla!leaf"})
+
+    public void noNumbers(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertFalse(tester.hasNumber());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"flowridia&1", "99ayla!leaf"})
+
+    public void validNumbers(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertTrue(tester.hasNumber());
+    }
 }
