@@ -70,4 +70,20 @@ public class RegisterApplicationTest {
         RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
         assertTrue(tester.hasNumber());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"flowridia65", "99ayla5leaf"})
+
+    public void noSymbols(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertFalse(tester.hasSymbol());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"flowridia&8", "99ayla!leaf"})
+
+    public void validSymbols(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertTrue(tester.hasSymbol());
+    }
 }

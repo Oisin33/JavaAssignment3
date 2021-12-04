@@ -35,6 +35,11 @@ public class RegistrationController {
             response.setText("Password must have at least 1 number");
         }
 
+        else if (!createUser.hasSymbol()) {
+            response.setTextFill(Color.FIREBRICK);
+            response.setText("Password must have at least 1 of these symbols: *^&@!");
+        }
+
         else {
             response.setTextFill(Color.MEDIUMSPRINGGREEN);
             response.setText("Registration Complete");
