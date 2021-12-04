@@ -18,26 +18,31 @@ public class RegistrationController {
         if (!createUser.validEmail()) {
             response.setTextFill(Color.FIREBRICK);
             response.setText("Invalid Email");
+            createUser.reset();
         }
 
         else if (!createUser.validLength()) {
             response.setTextFill(Color.FIREBRICK);
             response.setText("Password must be minimum 7 characters");
+            createUser.reset();
         }
 
         else if (!createUser.hasLetter()) {
             response.setTextFill(Color.FIREBRICK);
             response.setText("Password must have at least 1 letter");
+            createUser.reset();
         }
 
         else if (!createUser.hasNumber()) {
             response.setTextFill(Color.FIREBRICK);
             response.setText("Password must have at least 1 number");
+            createUser.reset();
         }
 
         else if (!createUser.hasSymbol()) {
             response.setTextFill(Color.FIREBRICK);
             response.setText("Password must have at least 1 of these symbols: *^&@!");
+            createUser.reset();
         }
 
         else {
