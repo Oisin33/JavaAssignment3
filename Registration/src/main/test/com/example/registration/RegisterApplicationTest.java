@@ -27,7 +27,7 @@ public class RegisterApplicationTest {
     @ValueSource(strings = {"", "fl@we", "ay!a2"})
 
     public void invalidPasswordLength(String passwordTest) {
-        RegistrationView tester = new RegistrationView("ayladarklaf@gmail.com", passwordTest);
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
         assertFalse(tester.validLength());
     }
 
@@ -39,4 +39,19 @@ public class RegisterApplicationTest {
         assertTrue(tester.validLength());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"@^1572@&5!", "@^685186@!$^"})
+
+    public void noLetters(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertFalse(tester.hasLetter());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"flowridia&8", "9ayla!leaf"})
+
+    public void validLetters(String passwordTest) {
+        RegistrationView tester = new RegistrationView("ayladarkleaf@gmail.com", passwordTest);
+        assertTrue(tester.hasLetter());
+    }
 }
