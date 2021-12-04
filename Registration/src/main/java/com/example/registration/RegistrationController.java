@@ -25,6 +25,16 @@ public class RegistrationController {
             response.setText("Password must be minimum 7 characters");
         }
 
+        else if (!createUser.hasLetter()) {
+            response.setTextFill(Color.FIREBRICK);
+            response.setText("Password must have at least 1 letter");
+        }
+
+        else if (!createUser.hasNumber()) {
+            response.setTextFill(Color.FIREBRICK);
+            response.setText("Password must have at least 1 number");
+        }
+
         else {
             response.setTextFill(Color.MEDIUMSPRINGGREEN);
             response.setText("Registration Complete");
