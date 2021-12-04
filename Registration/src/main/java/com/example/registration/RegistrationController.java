@@ -15,7 +15,14 @@ public class RegistrationController {
     public void registration() {
         RegistrationView createUser = new RegistrationView(emailForm.getText(), passwordForm.getText());
 
-        response.setTextFill(Color.MEDIUMSPRINGGREEN);
-        response.setText("Registration Complete");
+        if (!createUser.validEmail()) {
+            response.setTextFill(Color.FIREBRICK);
+            response.setText("Invalid Email");
+        }
+
+        else {
+            response.setTextFill(Color.MEDIUMSPRINGGREEN);
+            response.setText("Registration Complete");
+        }
     }
 }
