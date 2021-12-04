@@ -20,6 +20,11 @@ public class RegistrationController {
             response.setText("Invalid Email");
         }
 
+        else if (!createUser.validLength()) {
+            response.setTextFill(Color.FIREBRICK);
+            response.setText("Password must be minimum 7 characters");
+        }
+
         else {
             response.setTextFill(Color.MEDIUMSPRINGGREEN);
             response.setText("Registration Complete");
